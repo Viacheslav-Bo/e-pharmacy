@@ -1,6 +1,15 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-black: #1D1E21;
+  --color-primary: #59B17A;
+  --color-primary-tint: #59B17A1A;
+  --color-danger: #E85050;
+  --color-danger-tint: #E850501A;
+
+  --color-mint-bg: #E7F1ED;
+  --color-gray-200: #DCDDDF;
+  --color-gray-100: #F7F8FA;
+  --color-gray-50: #F9F9F9;
+  --color-white: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
