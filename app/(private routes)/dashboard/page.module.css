@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+}
+
+.tables {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.error {
+    color: var(--color-danger);
+    padding: 24px;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        padding: 24px;
+    }
+
+    .tables {
+        flex-direction: row;
+    }
+}
