@@ -1,7 +1,155 @@
 .wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 375px;
     min-height: 100vh;
+    background-color: var(--background-2);
+    overflow: visible;
+    padding: 24px 20px;
+    margin: 0 auto;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+.heading {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--main-black);
+    margin: 148px 0 40px 0;
+    max-width: 230px;
+}
+
+.accent {
+    color: var(--color-primary);
+}
+
+.pillImage {
+    position: absolute;
+    top: 240px;
+    right: 10px;
+    width: 95px;
+    height: 93px;
+}
+
+.decorTop,
+.decorBottom {
+    position: absolute;
+    border-radius: 999px;
+    width: 336px;
+    height: 71px;
     background-color: var(--color-mint-bg);
+    opacity: 0.6;
+    transform: rotate(22deg);
+}
+
+.decorTop {
+    bottom: 20px;
+    right: -200px;
+}
+
+.decorBottom {
+    bottom: -30px;
+    right: -80px;
+}
+
+@media (min-width: 375px) {
+    .pillImage {
+        top: 160px;
+        right: 40px;
+    }
+
+    .heading {
+        max-width: 100%;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .wrapper {
+        display: flex;
+        justify-content: flex-start;
+        max-width: 768px;
+        padding: 24px 32px;
+    }
+
+    .heading {
+        margin: 204px 0 50px 0;
+        max-width: 614px;
+        font-size: 54px;
+        line-height: 1.1;
+    }
+
+    .pillImage {
+        top: 168px;
+        right: 141px;
+        width: 179px;
+        height: 175px;
+    }
+
+    .decorTop {
+        width: 600px;
+        bottom: 95px;
+        right: -420px;
+    }
+
+    .decorBottom {
+        width: 600px;
+        bottom: 40px;
+        right: -300px;
+    }
+
+    .decorTab {
+        position: absolute;
+        border-radius: 999px;
+        width: 336px;
+        height: 71px;
+        background-color: var(--color-mint-bg);
+        opacity: 0.6;
+        transform: rotate(22deg);
+        bottom: -25px;
+        right: -80px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .wrapper {
+        max-width: 1440px;
+        padding: 28px 100px;
+    }
+
+    .content {
+        width: 100%;
+        flex-direction: row;
+
+        gap: 150px;
+    }
+
+    .desctopContent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .heroBlock {
+        width: 614px;
+        margin-right: 0;
+    }
+
+    .heading {
+        margin: 226px 0 auto 0;
+        line-height: 1.1;
+
+    }
+
+    .pillImage {
+        top: 194px;
+        right: 745px;
+    }
 }
