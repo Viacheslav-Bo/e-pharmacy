@@ -1,0 +1,55 @@
+.wrapper {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-100);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.title {
+    margin: -20px -20px 12px;
+    padding: 14px 20px;
+    background-color: var(--color-mint-bg);
+    font-size: 16px;
+    border-radius: 16px 16px 0 0;
+    color: var(--color-primary);
+}
+
+.dateLabel {
+    display: block;
+    font-size: 13px;
+    color: var(--color-gray-200);
+    padding: 8px 0;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid black;
+}
+
+.name {
+    flex: 1;
+    font-size: 14px;
+    color: black;
+}
+
+.amount {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.positive {
+    color: var(--color-primary);
+}
+
+.negative {
+    color: var(--color-danger);
+}
+
+.errored {
+    color: var(--color-black);
+    text-decoration: line-through;
+}

@@ -12,3 +12,9 @@ export interface LoginResponse {
   message: string;
   user: UserInfo & { role: "admin" | "user" };
 }
+
+export interface UserInfoResponse {
+  status: number;
+  message: string;
+  data: UserInfo;
+}

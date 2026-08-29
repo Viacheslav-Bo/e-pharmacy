@@ -1,0 +1,38 @@
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.completed {
+    background: var(--color-primary-tint);
+    color: var(--color-primary);
+}
+
+.confirmed {
+    background: #EFEAFE;
+    color: #7C5CFC;
+}
+
+.pending {
+    background: #FEF3E6;
+    color: #F5A623;
+}
+
+.cancelled {
+    background: var(--color-danger-tint);
+    color: var(--color-danger);
+}
+
+.processing {
+    background: #E9F1FB;
+    color: #4A90D9;
+}
+
+.error {
+    background: var(--color-gray-100);
+    color: var(--color-gray-200);
+}
