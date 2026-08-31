@@ -1,0 +1,8 @@
+.wrapper {
+    padding: 24px;
+}
+
+.error {
+    color: var(--color-danger);
+    padding: 24px;
+}

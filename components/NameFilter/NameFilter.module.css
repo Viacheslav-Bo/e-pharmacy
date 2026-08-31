@@ -1,0 +1,50 @@
+.form {
+    display: flex;
+    width: 100%;
+}
+
+.input {
+    flex: 1;
+    width: 100%;
+    max-width: none;
+    height: 44px;
+
+    padding: 12px 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    border-radius: 60px;
+
+
+    box-shadow: 0 -1px 5px 0 rgba(71, 71, 71, 0.05);
+    background: var(--background-3);
+    color: var(--main-black);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.filterBtn {
+    display: none;
+}
+
+
+@media (min-width: 768px) {
+    .filterBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        width: 116px;
+    }
+
+    .form {
+        gap: 12px;
+    }
+
+    .input {
+        max-width: 224px;
+    }
+}

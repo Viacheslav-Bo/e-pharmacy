@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 0;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-gray-100);
+    cursor: pointer;
+    padding: 0;
+}
+
+.active {
+    background-color: var(--color-primary);
+}
