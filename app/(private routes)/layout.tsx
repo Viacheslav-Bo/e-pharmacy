@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Header } from "@/components/Header/Header";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
 import styles from "./layout.module.css";
 
 export default function PrivateLayout({
@@ -14,7 +15,14 @@ export default function PrivateLayout({
   return (
     <div className={styles.wrapper}>
       <Header onMenuOpen={() => setIsMobileMenuOpen(true)} />
-      <main className={styles.content}>{children}</main>
+     
+      <div className={styles.body}>
+        <Sidebar
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
+        <main className={styles.content}>{children}</main>
+      </div>
     </div>
   );
 }
