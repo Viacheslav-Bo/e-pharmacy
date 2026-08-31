@@ -36,3 +36,15 @@
     background: var(--color-gray-100);
     color: var(--color-gray-200);
 }
+
+
+.shipped {
+    background: #FFF4E5;
+    color: #F5A623;
+}
+
+
+.delivered {
+    background: var(--color-primary-tint);
+    color: var(--color-primary);
+}

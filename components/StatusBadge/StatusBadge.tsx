@@ -9,6 +9,8 @@ const STATUS_CLASS: Record<string, string> = {
   Income: styles.completed,
   Expense: styles.cancelled,
   Error: styles.error,
+  Shipped: styles.shipped,
+  Delivered: styles.delivered,
 };
 
 export const StatusBadge = ({ status }: { status: string }) => {
