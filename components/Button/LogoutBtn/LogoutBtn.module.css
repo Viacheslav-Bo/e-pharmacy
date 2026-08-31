@@ -9,4 +9,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
+}
+
+@media (min-width: 1440px) {
+    .logoutBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

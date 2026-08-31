@@ -16,7 +16,7 @@ export const Logo = ({
 
   return (
     <Link href={href} className={styles.logo} aria-label="E-Pharmacy">
-      <Image src="/logo.png" alt="" width={44} height={44} />
+      <Image src="/logo.png" alt="" width={40} height={40} />
 
       {!iconOnly && <span className={styles.text}>E-Pharmacy</span>}
     </Link>

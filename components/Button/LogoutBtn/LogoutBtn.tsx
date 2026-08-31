@@ -21,7 +21,7 @@ export const LogoutBtn = ({ className }: { className?: string }) => {
       className={`${styles.logoutBtn} ${className ?? ""}`}
       onClick={handleLogout}
     >
-      <svg width="20" height="20">
+      <svg width="16" height="16">
         <use href="/sprite.svg#logout" />
       </svg>
     </button>

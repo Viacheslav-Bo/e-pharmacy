@@ -33,7 +33,7 @@ export const Header = ({ onMenuOpen }: HeaderProps) => {
         onClick={onMenuOpen}
         aria-label="Open menu"
       >
-        <svg width="24" height="24">
+        <svg>
           <use href="/sprite.svg#menu" />
         </svg>
       </button>

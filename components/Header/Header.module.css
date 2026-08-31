@@ -1,7 +1,6 @@
 .header {
     display: flex;
     align-items: center;
-    gap: 16px;
     padding: 16px 20px;
     background-color: var(--color-gray-100);
     border-bottom: 1px solid var(--color-gray-200);
@@ -14,6 +13,9 @@
     cursor: pointer;
     color: var(--color-black);
     padding: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
 }
 
 .textBlock {
@@ -36,14 +38,29 @@
 
 .logout {
     margin-left: auto;
+    display: none;
 }
 
 @media (min-width: 768px) {
     .header {
-        padding: 20px 32px;
+        padding: 24px 32px;
     }
 
     .menuBtn {
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+    }
+
+
+}
+
+@media (min-width: 1440px) {
+    .menuBtn {
         display: none;
+    }
+
+    .logout {
+        display: block;
     }
 }
