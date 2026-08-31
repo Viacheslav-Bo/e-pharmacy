@@ -1,0 +1,56 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 335px;
+    height: 484px;
+
+    padding: 40px 40px 60px 40px;
+
+    border-radius: 12px;
+    background-color: var(--background-3);
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+    color: var(--main-black);
+}
+
+@media (min-width: 768px) {
+    .modal {
+        max-width: 536px;
+        height: 412px;
+    }
+}
