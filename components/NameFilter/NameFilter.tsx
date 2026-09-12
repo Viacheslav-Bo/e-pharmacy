@@ -7,11 +7,15 @@ import styles from "./NameFilter.module.css";
 type NameFilterProps = {
   placeholder?: string;
   onFilter: (name: string) => void;
+  showFilterButton?: boolean;
+  noPaddingRight?: boolean;
 };
 
 export const NameFilter = ({
   placeholder = "User Name",
   onFilter,
+  showFilterButton = true,
+  noPaddingRight = true,
 }: NameFilterProps) => {
   const [value, setValue] = useState("");
 
@@ -22,7 +26,10 @@ export const NameFilter = ({
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${noPaddingRight ? styles.noRightPadding : ""}`}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         placeholder={placeholder}
@@ -30,12 +37,14 @@ export const NameFilter = ({
         onChange={(e) => setValue(e.target.value)}
         className={styles.input}
       />
-      <Button type="submit" className={styles.filterBtn}>
-        <svg width="16" height="16">
-          <use href="/sprite.svg#filter" />
-        </svg>
-        Filter
-      </Button>
+      {showFilterButton && (
+        <Button type="submit" className={styles.filterBtn}>
+          <svg width="16" height="16">
+            <use href="/sprite.svg#filter" />
+          </svg>
+          Filter
+        </Button>
+      )}
     </form>
   );
 };

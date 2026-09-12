@@ -23,8 +23,6 @@ export const ProductsTable = ({ products }: ProductsTableProps) => {
     }
   };
 
-  console.log("TABLE PRODUCTS:", products);
-
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.title}>All products</h3>

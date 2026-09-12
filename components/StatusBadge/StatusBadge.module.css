@@ -48,3 +48,8 @@
     background: var(--color-primary-tint);
     color: var(--color-primary);
 }
+
+.badge {
+    width: 89px;
+    text-align: center;
+}

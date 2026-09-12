@@ -1,6 +1,13 @@
 .form {
     display: flex;
     width: 100%;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    gap: 8px;
+}
+
+.noRightPadding {
+    padding-right: 0;
 }
 
 .input {
@@ -21,24 +28,34 @@
     color: var(--main-black);
 }
 
+.input::placeholder {
+    color: rgba(29, 30, 33, 0.4);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
 .input:focus {
     outline: none;
     border-color: var(--color-primary);
 }
 
+
+
 .filterBtn {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.5;
+    gap: 8px;
+    padding: 13px 30px;
+
 }
 
 
 @media (min-width: 768px) {
-    .filterBtn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        white-space: nowrap;
-        width: 116px;
-    }
+
 
     .form {
         gap: 12px;

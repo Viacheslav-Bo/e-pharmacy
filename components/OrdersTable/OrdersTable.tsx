@@ -4,6 +4,7 @@ import Image from "next/image";
 import { StatusBadge } from "@/components/StatusBadge/StatusBadge";
 import { parseAmount } from "@/lib/parseAmount";
 import type { Order } from "@/types/order";
+
 import styles from "./OrdersTable.module.css";
 
 type OrdersTableProps = {
@@ -30,30 +31,24 @@ export const OrdersTable = ({ orders }: OrdersTableProps) => {
 
           <tbody>
             {(orders ?? []).map((order) => {
-              const showImage = Boolean(order.photo);
+              const imageSrc = "/user-defoult.png";
 
               return (
                 <tr key={order._id}>
-                  <td>
+                  <td className={styles.tableTd}>
                     <div className={styles.nameCell}>
-                      {showImage ?
-                        <Image
-                          src={order.photo!}
-                          alt={order.name}
-                          width={32}
-                          height={32}
-                          className={styles.avatar}
-                        />
-                      : <div className={styles.avatarPlaceholder}>
-                          {order.name.charAt(0).toUpperCase()}
-                        </div>
-                      }
-
+                      <Image
+                        src={imageSrc}
+                        alt={order.name}
+                        width={24}
+                        height={24}
+                        className={styles.avatar}
+                      />
                       <span>{order.name}</span>
                     </div>
                   </td>
 
-                  <td>{order.address}</td>
+                  <td>{order.address.split(",")[0]}</td>
                   <td>{order.products}</td>
                   <td>{order.order_date}</td>
                   <td>{parseAmount(order.price).toFixed(2)}</td>
