@@ -26,34 +26,36 @@ export default function ProductsPage() {
   }
 
   return (
-    
-      <div className={styles.wrapper}>
-        <div className={styles.toolbar}>
-          <NameFilter placeholder="Product Name" onFilter={setName} />
+    <div className={styles.wrapper}>
+      <div className={styles.toolbar}>
+        <NameFilter
+          placeholder="Product Name"
+          onFilter={setName}
+          showFilterButton={false}
+        />
 
-          <button
-            type="button"
-            className={styles.addButton}
-            onClick={() => setIsAddModalOpen(true)}
-          >
-            <span className={styles.addIcon}>
-              <svg width="16" height="16">
-                <use href="/sprite.svg#add" />
-              </svg>
-            </span>
+        <button
+          type="button"
+          className={styles.addButton}
+          onClick={() => setIsAddModalOpen(true)}
+        >
+          <span className={styles.addIcon}>
+            <svg width="16" height="16">
+              <use href="/sprite.svg#add" />
+            </svg>
+          </span>
 
-            <span className={styles.addText}>Add a new product</span>
-          </button>
-        </div>
-
-        {isLoading || !data ?
-          <p>Loading...</p>
-        : <ProductsTable products={data} />}
-
-        {isAddModalOpen && (
-          <AddProductModal onClose={() => setIsAddModalOpen(false)} />
-        )}
+          <span className={styles.addText}>Add a new product</span>
+        </button>
       </div>
-    
+
+      {isLoading || !data ?
+        <p>Loading...</p>
+      : <ProductsTable products={data} />}
+
+      {isAddModalOpen && (
+        <AddProductModal onClose={() => setIsAddModalOpen(false)} />
+      )}
+    </div>
   );
 }

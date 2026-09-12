@@ -6,8 +6,8 @@
   --color-danger-tint: #E850501A;
 
   --color-mint-bg: #E7F1ED;
-  --color-gray-200: #DCDDDF;
-  --color-gray-100: #F7F8FA;
+  --color-gray-200: rgba(29, 30, 33, 0.4);
+  --color-gray-100: rgba(29, 30, 33, 0.1);
   --color-gray-50: #F9F9F9;
   --color-white: #FFFFFF;
   --main-black: #1d1e21;

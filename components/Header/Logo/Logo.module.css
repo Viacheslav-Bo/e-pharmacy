@@ -1,11 +1,9 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
     flex-shrink: 0;
-    width: 44px;
-    height: 44px;
     margin-right: 20px;
+
 }
 
 .text {
@@ -13,12 +11,28 @@
     font-size: 20px;
     color: var(--color-black);
     letter-spacing: -0.03em;
+    margin-left: 14px;
 }
+
+
 
 @media (min-width: 768px) {
     .logo {
+        margin-right: 32px;
+
+    }
+
+    .icon {
         width: 40px;
         height: 40px;
-        margin-right: 32px;
     }
+}
+
+@media (min-width: 1440px) {
+    .logo {
+        margin-right: 60px;
+
+    }
+
+
 }

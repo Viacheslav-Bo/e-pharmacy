@@ -20,7 +20,11 @@ export default function OrdersPage() {
 
   return (
     <div className={styles.wrapper}>
-      <NameFilter placeholder="User Name" onFilter={setName} />
+      <NameFilter
+        placeholder="User Name"
+        onFilter={setName}
+        noPaddingRight={false}
+      />
       {isLoading || !data ?
         <p>Loading...</p>
       : <OrdersTable orders={data} />}

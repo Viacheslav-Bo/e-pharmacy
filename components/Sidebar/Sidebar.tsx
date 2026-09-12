@@ -9,8 +9,8 @@ const MENU_ITEMS = [
   { href: "/dashboard", icon: "dashboard", label: "Dashboard" },
   { href: "/orders", icon: "orders", label: "Orders" },
   { href: "/products", icon: "products", label: "Products" },
-  { href: "/customers", icon: "customers", label: "Customers" },
   { href: "/suppliers", icon: "suppliers", label: "Suppliers" },
+  { href: "/customers", icon: "customers", label: "Customers" },
 ];
 
 type SidebarProps = {
@@ -32,9 +32,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           aria-label="Close menu"
         >
           <svg width="32" height="32">
-            <use
-              href="/sprite.svg#close"
-            />
+            <use href="/sprite.svg#close" />
           </svg>
         </button>
 

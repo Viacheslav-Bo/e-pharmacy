@@ -13,7 +13,7 @@ const PAGE_LABELS: Record<string, string> = {
   "/orders": "All orders",
   "/products": "All products",
   "/suppliers": "All suppliers",
-  "/customers": "Customers Data",
+  "/customers": "All customers",
 };
 
 type HeaderProps = {
