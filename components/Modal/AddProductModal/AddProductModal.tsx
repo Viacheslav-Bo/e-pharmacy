@@ -26,6 +26,13 @@ export const AddProductModal = ({ onClose }: AddProductModalProps) => {
 
   const queryClient = useQueryClient();
 
+  const isFormValid =
+    name.trim() !== "" &&
+    category.trim() !== "" &&
+    stock.trim() !== "" &&
+    suppliers.trim() !== "" &&
+    price.trim() !== "";
+
   const addProductMutation = useMutation({
     mutationFn: async () => {
       const newProduct = {
@@ -73,6 +80,7 @@ export const AddProductModal = ({ onClose }: AddProductModalProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!isFormValid) return;
 
     addProductMutation.mutate();
   };
@@ -88,7 +96,7 @@ export const AddProductModal = ({ onClose }: AddProductModalProps) => {
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="Product name"
+            placeholder="Product info"
           />
 
           <Select
@@ -107,17 +115,17 @@ export const AddProductModal = ({ onClose }: AddProductModalProps) => {
           <input
             className={styles.input}
             type="text"
-            value={stock}
-            onChange={(event) => setStock(event.target.value)}
-            placeholder="Stock"
+            value={suppliers}
+            onChange={(event) => setSuppliers(event.target.value)}
+            placeholder="Suppliers"
           />
 
           <input
             className={styles.input}
             type="text"
-            value={suppliers}
-            onChange={(event) => setSuppliers(event.target.value)}
-            placeholder="Suppliers"
+            value={stock}
+            onChange={(event) => setStock(event.target.value)}
+            placeholder="Stock"
           />
 
           <input
@@ -133,7 +141,7 @@ export const AddProductModal = ({ onClose }: AddProductModalProps) => {
           <button
             type="submit"
             className={styles.saveButton}
-            disabled={addProductMutation.isPending}
+            disabled={!isFormValid || addProductMutation.isPending}
           >
             {addProductMutation.isPending ? "Adding..." : "Add"}
           </button>

@@ -17,9 +17,9 @@
 
     width: 100%;
     max-width: 335px;
-    height: 484px;
+    min-height: 484px;
 
-    padding: 40px 40px 60px 40px;
+    padding: 40px 20px;
 
     border-radius: 12px;
     background-color: var(--background-3);
