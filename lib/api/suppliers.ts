@@ -4,6 +4,7 @@ import type { SuppliersResponse } from "@/types/supplier";
 type GetSuppliersParams = {
   name?: string;
   page?: number;
+  limit?: number;
 };
 
 export const getSuppliers = async (

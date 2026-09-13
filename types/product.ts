@@ -9,4 +9,9 @@ export interface Product {
   category: string;
 }
 
-export type ProductsResponse = Product[];
+export type ProductsResponse = {
+  products: Product[];
+  totalPages: number;
+  currentPage?: number;
+  totalItems?: number;
+};

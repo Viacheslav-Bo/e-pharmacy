@@ -11,8 +11,8 @@ export interface Customer {
 }
 
 export interface CustomersResponse {
-  data: Customer[];
-  total: number;
-  page: number;
+  customers: Customer[];
   totalPages: number;
+  currentPage?: number;
+  totalItems?: number;
 }

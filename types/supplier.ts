@@ -8,4 +8,9 @@ export interface Supplier {
   status: string;
 }
 
-export type SuppliersResponse = Supplier[];
+export type SuppliersResponse = {
+  suppliers: Supplier[];
+  totalPages: number;
+  currentPage?: number;
+  totalItems?: number;
+};

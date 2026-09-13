@@ -16,4 +16,9 @@ export interface Order {
   status: OrderStatus;
 }
 
-export type OrdersResponse = Order[];
+export type OrdersResponse = {
+  orders: Order[];
+  totalPages: number;
+  currentPage?: number;
+  totalItems?: number;
+};

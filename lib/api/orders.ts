@@ -4,6 +4,7 @@ import type { OrdersResponse } from "@/types/order";
 type GetOrdersParams = {
   search?: string;
   page?: number;
+  limit?: number;
 };
 
 export const getOrders = async (

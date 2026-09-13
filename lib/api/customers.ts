@@ -4,6 +4,7 @@ import type { CustomersResponse } from "@/types/customer";
 type GetCustomersParams = {
   name?: string;
   page?: number;
+  limit?: number;
 };
 
 export const getCustomers = async (
