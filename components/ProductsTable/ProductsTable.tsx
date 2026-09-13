@@ -4,6 +4,7 @@ import { parseAmount } from "@/lib/parseAmount";
 import type { Product } from "@/types/product";
 import { EditProductModal } from "@/components/Modal/EditProductModal/EditProductModal";
 import styles from "./ProductsTable.module.css";
+import { DeleteProductModal } from "../Modal/DeleteProductModal/DeleteProductModal";
 
 type ProductsTableProps = {
   products: Product[];
@@ -11,16 +12,17 @@ type ProductsTableProps = {
 
 export const ProductsTable = ({ products }: ProductsTableProps) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [productToDelete, setProductToDelete] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
 
   const handleEdit = (product: Product) => {
     setSelectedProduct(product);
   };
 
-  const handleDelete = (id: string) => {
-    if (confirm("Видалити товар?")) {
-      console.log("Delete:", id);
-      // тут виклик delete mutation
-    }
+  const handleDelete = (id: string, name: string) => {
+    setProductToDelete({ id, name });
   };
 
   return (
@@ -70,7 +72,7 @@ export const ProductsTable = ({ products }: ProductsTableProps) => {
                       <button
                         type="button"
                         className={styles.deleteButton}
-                        onClick={() => handleDelete(product._id)}
+                        onClick={() => handleDelete(product._id, product.name)}
                         aria-label="Delete product"
                       >
                         <svg width="16" height="16">
@@ -84,13 +86,21 @@ export const ProductsTable = ({ products }: ProductsTableProps) => {
             })}
           </tbody>
         </table>
-        {selectedProduct && (
-          <EditProductModal
-            product={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
-          />
-        )}
       </div>
+
+      {selectedProduct && (
+        <EditProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
+      {productToDelete && (
+        <DeleteProductModal
+          productId={productToDelete.id}
+          productName={productToDelete.name}
+          onClose={() => setProductToDelete(null)}
+        />
+      )}
     </div>
   );
 };

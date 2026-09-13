@@ -15,7 +15,7 @@ export const CustomersTable = ({ customers }: CustomersTableProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <h3 className={styles.title}>Customers Info</h3>
+      <h3 className={styles.title}>Customers Data</h3>
 
       <div className={styles.scrollArea}>
         <table className={styles.table}>
@@ -35,7 +35,6 @@ export const CustomersTable = ({ customers }: CustomersTableProps) => {
                 <tr key={customer._id}>
                   <td>
                     <div className={styles.nameCell}>
-                      <span>{customer.name}</span>
                       <Image
                         src={
                           customer.image ||
@@ -47,6 +46,7 @@ export const CustomersTable = ({ customers }: CustomersTableProps) => {
                         height={24}
                         className={styles.avatar}
                       />
+                      <span>{customer.name}</span>
                     </div>
                   </td>
                   <td>{customer.email}</td>
