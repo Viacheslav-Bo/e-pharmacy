@@ -17,7 +17,8 @@
 
     width: 100%;
     max-width: 335px;
-    min-height: 484px;
+    height: fit-content;
+
 
     padding: 40px 20px;
 
@@ -51,6 +52,9 @@
 @media (min-width: 768px) {
     .modal {
         max-width: 536px;
-        height: 412px;
+
+        padding: 40px;
     }
 }
+
+@media (min-width: 1440px) {}

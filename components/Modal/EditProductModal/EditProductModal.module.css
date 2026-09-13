@@ -7,7 +7,7 @@
 .title {
 
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.2;
     color: var(--main-black);
     margin-bottom: 20px;
@@ -70,6 +70,14 @@
 .saveButton {
     background-color: var(--color-primary);
     color: white;
+}
+
+.saveButton:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .select {
@@ -169,4 +177,35 @@
         flex: 0 0 calc(50% - 8px);
         box-sizing: border-box;
     }
+
+    .actions {
+        justify-content: start;
+
+    }
+
+    .cancelButton,
+    .saveButton {
+
+        border: 0;
+        border-radius: 60px;
+        width: max-content;
+        height: 44px;
+
+        cursor: pointer;
+    }
+
+    .cancelButton {
+        padding: 13px 43px;
+    }
+
+    .saveButton {
+        padding: 13px 52px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
 }
+
+@media (min-width: 1440px) {}

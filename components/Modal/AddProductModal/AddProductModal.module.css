@@ -176,4 +176,35 @@
         flex: 0 0 calc(50% - 8px);
         box-sizing: border-box;
     }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .actions {
+        justify-content: start;
+        margin-bottom: 20px;
+    }
+
+    .cancelButton,
+    .saveButton {
+
+        border: 0;
+        border-radius: 60px;
+        width: max-content;
+        height: 44px;
+
+        cursor: pointer;
+    }
+
+    .cancelButton {
+        padding: 13px 43px;
+    }
+
+    .saveButton {
+        padding: 13px 52px;
+    }
 }
+
+@media (min-width: 1440px) {}

@@ -133,8 +133,12 @@ export const EditProductModal = ({
         </div>
 
         <div className={styles.actions}>
-          <button type="submit" className={styles.saveButton}>
-            Save
+          <button
+            type="submit"
+            className={styles.saveButton}
+            disabled={updateProductMutation.isPending}
+          >
+            {updateProductMutation.isPending ? "Saving..." : "Save"}
           </button>
           <button
             type="button"

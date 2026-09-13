@@ -26,6 +26,14 @@ export const AddSupplierModal = ({ onClose }: AddSupplierModalProps) => {
 
   const queryClient = useQueryClient();
 
+  const isFormValid =
+    name.trim() !== "" &&
+    address.trim() !== "" &&
+    date.trim() !== "" &&
+    amount.trim() !== "" &&
+    suppliers.trim() !== "" &&
+    status.trim() !== "";
+
   const addSupplierMutation = useMutation({
     mutationFn: async () => {
       const newSupplier = {
@@ -115,7 +123,7 @@ export const AddSupplierModal = ({ onClose }: AddSupplierModalProps) => {
             onChange={(option) => setStatus(option?.value ?? "")}
             options={[
               { value: "Active", label: "Active" },
-              { value: "Inactive", label: "Inactive" },
+              { value: "Deactive", label: "Deactive" },
             ]}
             className={styles.select}
             classNamePrefix="select"
@@ -128,7 +136,7 @@ export const AddSupplierModal = ({ onClose }: AddSupplierModalProps) => {
           <button
             type="submit"
             className={styles.saveButton}
-            disabled={addSupplierMutation.isPending}
+            disabled={addSupplierMutation.isPending || !isFormValid}
           >
             {addSupplierMutation.isPending ? "Adding..." : "Add"}
           </button>
