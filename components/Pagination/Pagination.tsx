@@ -11,9 +11,15 @@ export const Pagination = ({
   totalPages,
   onPageChange,
 }: PaginationProps) => {
+  const start = Math.max(0, Math.min(currentPage - 3, totalPages - 5));
+  const visiblePages = Array.from(
+    { length: Math.min(totalPages, 5) },
+    (_, i) => start + i + 1,
+  );
+
   return (
     <div className={styles.wrapper}>
-      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+      {visiblePages.map((page) => (
         <button
           key={page}
           type="button"

@@ -1,13 +1,14 @@
 .form {
     display: flex;
     width: 100%;
+    max-width: 355px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 16px;
     gap: 8px;
 }
 
 .noRightPadding {
-    padding-right: 0;
+    padding-right: 20px;
 }
 
 .input {
@@ -59,9 +60,15 @@
 
     .form {
         gap: 12px;
+
     }
 
     .input {
         max-width: 224px;
+    }
+
+    .filterBtn {
+        font-size: 14px;
+        height: 44px;
     }
 }

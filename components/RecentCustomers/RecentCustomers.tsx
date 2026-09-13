@@ -31,8 +31,8 @@ export const RecentCustomers = ({
                         <Image
                           src={avatarSrc}
                           alt={customer.name}
-                          width={32}
-                          height={32}
+                          width={24}
+                          height={24}
                           className={styles.avatar}
                         />
                       : <div className={styles.avatarPlaceholder}>

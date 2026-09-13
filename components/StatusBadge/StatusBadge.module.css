@@ -1,8 +1,8 @@
 .badge {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 4px 13px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     white-space: nowrap;
 }
@@ -34,7 +34,7 @@
 
 .error {
     background: var(--color-gray-100);
-    color: var(--color-gray-200);
+    color: var(--main-black);
 }
 
 
@@ -50,6 +50,13 @@
 }
 
 .badge {
-    width: 89px;
+    width: 83px;
     text-align: center;
+}
+
+@media (min-width: 768px) {
+    .badge {
+        font-size: 14px;
+        width: 92px;
+    }
 }

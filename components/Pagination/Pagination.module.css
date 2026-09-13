@@ -1,20 +1,37 @@
 .wrapper {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    align-items: center;
+    gap: 22px;
     padding: 20px 0;
+    max-width: 720px;
+
 }
 
 .dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     border: none;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-primary-tint);
     cursor: pointer;
     padding: 0;
 }
 
 .active {
     background-color: var(--color-primary);
+    width: 12px;
+    height: 12px;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .wrapper {
+        max-width: 1280px;
+    }
 }

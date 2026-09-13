@@ -7,17 +7,22 @@ export const Statistics = ({
   customers,
 }: DashboardStatistics) => {
   const items = [
-    { label: "All products", value: products },
-    { label: "All suppliers", value: suppliers },
-    { label: "All Customers", value: customers },
+    { label: "All products", value: products, iconId: "coins" },
+    { label: "All suppliers", value: suppliers, iconId: "coins" },
+    { label: "All Customers", value: customers, iconId: "users" },
   ];
 
   return (
     <div className={styles.wrapper}>
       {items.map((item) => (
         <div key={item.label} className={styles.card}>
+          <div className={styles.header}>
+            <svg className={styles.icon} width="20" height="20">
+              <use href={`/sprite.svg#${item.iconId}`} />
+            </svg>
+            <span className={styles.label}>{item.label}</span>
+          </div>
           <span className={styles.value}>{item.value}</span>
-          <span className={styles.label}>{item.label}</span>
         </div>
       ))}
     </div>
