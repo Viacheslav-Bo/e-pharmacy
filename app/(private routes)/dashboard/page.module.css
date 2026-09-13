@@ -45,7 +45,7 @@
 
 @media (min-width: 768px) {
     .wrapper {
-        padding: 20px 0 20px 32px;
+        padding: 20px 32px;
         gap: 40px;
     }
 
