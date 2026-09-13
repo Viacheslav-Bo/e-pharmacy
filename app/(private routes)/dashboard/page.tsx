@@ -22,6 +22,8 @@ export default function DashboardPage() {
       <Statistics {...data.stats} />
       <div className={styles.tables}>
         <RecentCustomers customers={data.recentCustomers} />
+        <div className={styles.scrollHint} aria-hidden="true" />
+
         <IncomeExpenses entries={data.transactions} />
       </div>
     </div>

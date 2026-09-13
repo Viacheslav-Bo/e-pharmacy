@@ -7,19 +7,26 @@ import { getSuppliers } from "@/lib/api/suppliers";
 import { NameFilter } from "@/components/NameFilter/NameFilter";
 import { SuppliersTable } from "@/components/SuppliersTable/SuppliersTable";
 import { AddSupplierModal } from "@/components/Modal/AddSupplierModal/AddSupplierModal";
+import { Pagination } from "@/components/Pagination/Pagination";
 
 import styles from "./page.module.css";
 
 export default function SuppliersPage() {
   const [name, setName] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [page, setPage] = useState(1);
+  const limit = 5;
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["suppliers", name],
-    queryFn: () => getSuppliers({ name: name || undefined }),
+    queryKey: ["suppliers", name, page],
+    queryFn: () => getSuppliers({ name: name || undefined, page, limit }),
+    placeholderData: (previousData) => previousData,
   });
 
-  console.log("PAGE DATA:", data);
+  const handleFilterChange = (newName: string) => {
+    setName(newName);
+    setPage(1);
+  };
 
   if (isError) {
     return <p className={styles.error}>Не вдалось завантажити suppliers</p>;
@@ -28,7 +35,7 @@ export default function SuppliersPage() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
-        <NameFilter placeholder="Users Name" onFilter={setName} />
+        <NameFilter placeholder="Users Name" onFilter={handleFilterChange} />
 
         <button
           type="button"
@@ -41,7 +48,19 @@ export default function SuppliersPage() {
 
       {isLoading || !data ?
         <p>Loading...</p>
-      : <SuppliersTable suppliers={data} />}
+      : <>
+          <SuppliersTable suppliers={data.suppliers} />
+
+          {data.totalPages > 1 && (
+            <Pagination
+              currentPage={page}
+              totalPages={data.totalPages}
+              onPageChange={setPage}
+            />
+          )}
+          <div className={styles.scrollHint} aria-hidden="true" />
+        </>
+      }
 
       {isAddModalOpen && (
         <AddSupplierModal onClose={() => setIsAddModalOpen(false)} />

@@ -3,10 +3,37 @@
 
 }
 
+.scrollHint {
+    position: fixed;
+    bottom: 20px;
+    left: 20;
+    width: 100%;
+    max-width: 670px;
+    height: 10px;
+    border-radius: 14px;
+    background: #f1f1f1;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.scrollHint::after {
+    content: "";
+    position: absolute;
+    width: 45%;
+    height: 10px;
+    border-radius: 14px;
+    background: #e6e6e6;
+}
+
 
 @media (min-width: 768px) {
     .wrapper {
         padding: 50px 0 32px 32px;
+    }
+
+    .scrollHint {
+        max-width: 960px;
+        left: 32;
     }
 }
 
@@ -14,5 +41,9 @@
 @media (min-width: 1440px) {
     .wrapper {
         padding: 75px 40px 40px 40px;
+    }
+
+    .scrollHint {
+        display: none;
     }
 }
