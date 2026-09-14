@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
-
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Select from "react-select";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { FormDatePicker } from "@/components/FormDatePicker/FormDatePicker";
 
 import { Modal } from "@/components/Modal/Modal";
-import Select from "react-select";
-
 import { api } from "@/lib/axios";
-import axios from "axios";
+import {
+  addSupplierSchema,
+  type AddSupplierFormValues,
+} from "./AddSupplierModal.schema";
 
 import styles from "./AddSupplierModal.module.css";
 
@@ -17,130 +22,155 @@ type AddSupplierModalProps = {
 };
 
 export const AddSupplierModal = ({ onClose }: AddSupplierModalProps) => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [date, setDate] = useState("");
-  const [suppliers, setSuppliers] = useState("");
-  const [amount, setAmount] = useState("");
-  const [status, setStatus] = useState("");
-
   const queryClient = useQueryClient();
 
-  const isFormValid =
-    name.trim() !== "" &&
-    address.trim() !== "" &&
-    date.trim() !== "" &&
-    amount.trim() !== "" &&
-    suppliers.trim() !== "" &&
-    status.trim() !== "";
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<AddSupplierFormValues>({
+    resolver: yupResolver(addSupplierSchema),
+    mode: "onTouched",
+  });
 
   const addSupplierMutation = useMutation({
-    mutationFn: async () => {
-      const newSupplier = {
-        name,
-        address,
-        date,
-        amount,
-        suppliers,
-        status,
-      };
-
-      const { data } = await api.post("/suppliers", newSupplier);
-
+    mutationFn: async (payload: AddSupplierFormValues) => {
+      const { data } = await api.post("/suppliers", payload);
       return data;
     },
-
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: ["suppliers"],
-      });
-
+      await queryClient.invalidateQueries({ queryKey: ["suppliers"] });
+      toast.success("Supplier added successfully");
       onClose();
     },
-
     onError: (error) => {
       if (axios.isAxiosError(error)) {
         console.log("STATUS:", error.response?.status);
         console.log("RESPONSE:", error.response?.data);
       }
+      toast.error("Failed to add supplier");
     },
   });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    addSupplierMutation.mutate();
+  const onSubmit = (values: AddSupplierFormValues) => {
+    addSupplierMutation.mutate(values);
   };
 
   return (
     <Modal onClose={onClose}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.form}
+        noValidate
+      >
         <h2 className={styles.title}>Add a new suppliers</h2>
 
         <div className={styles.fields}>
-          <input
-            className={styles.input}
-            type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            placeholder="Supplier info"
-          />
+          <div className={styles.field}>
+            <input
+              className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
+              type="text"
+              placeholder="Supplier info"
+              {...register("name")}
+            />
+            {errors.name && (
+              <span className={styles.errorText}>{errors.name.message}</span>
+            )}
+          </div>
 
-          <input
-            className={styles.input}
-            type="address"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
-            placeholder="Address"
-          />
+          <div className={styles.field}>
+            <input
+              className={`${styles.input} ${errors.address ? styles.inputError : ""}`}
+              type="text"
+              placeholder="Address"
+              {...register("address")}
+            />
+            {errors.address && (
+              <span className={styles.errorText}>{errors.address.message}</span>
+            )}
+          </div>
 
-          <input
-            className={styles.input}
-            type="text"
-            value={suppliers}
-            onChange={(event) => setSuppliers(event.target.value)}
-            placeholder="Company"
-          />
+          <div className={styles.field}>
+            <input
+              className={`${styles.input} ${errors.suppliers ? styles.inputError : ""}`}
+              type="text"
+              placeholder="Company"
+              {...register("suppliers")}
+            />
+            {errors.suppliers && (
+              <span className={styles.errorText}>
+                {errors.suppliers.message}
+              </span>
+            )}
+          </div>
 
-          <input
-            className={styles.input}
-            type="date"
-            value={date}
-            onChange={(event) => setDate(event.target.value)}
-            placeholder="Delivery date"
-          />
+          <div className={styles.field}>
+            <Controller
+              name="date"
+              control={control}
+              render={({ field }) => (
+                <FormDatePicker
+                  value={field.value}
+                  onChange={field.onChange}
+                  error={!!errors.date}
+                />
+              )}
+            />
+            {errors.date && (
+              <span className={styles.errorText}>{errors.date.message}</span>
+            )}
+          </div>
 
-          <input
-            className={styles.input}
-            type="text"
-            value={amount}
-            onChange={(event) => setAmount(event.target.value)}
-            placeholder="Ammount"
-          />
+          <div className={styles.field}>
+            <input
+              className={`${styles.input} ${errors.amount ? styles.inputError : ""}`}
+              type="text"
+              placeholder="Ammount"
+              {...register("amount")}
+            />
+            {errors.amount && (
+              <span className={styles.errorText}>{errors.amount.message}</span>
+            )}
+          </div>
 
-          <Select
-            value={status ? { value: status, label: status } : null}
-            onChange={(option) => setStatus(option?.value ?? "")}
-            options={[
-              { value: "Active", label: "Active" },
-              { value: "Deactive", label: "Deactive" },
-            ]}
-            className={styles.select}
-            classNamePrefix="select"
-            isSearchable={false}
-            placeholder="Status"
-          />
+          <div className={styles.field}>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  value={
+                    field.value ?
+                      { value: field.value, label: field.value }
+                    : null
+                  }
+                  onChange={(option) => field.onChange(option?.value ?? "")}
+                  options={[
+                    { value: "Active", label: "Active" },
+                    { value: "Deactive", label: "Deactive" },
+                  ]}
+                  className={styles.select}
+                  classNamePrefix="select"
+                  isSearchable={false}
+                  placeholder="Status"
+                />
+              )}
+            />
+            {errors.status && (
+              <span className={styles.errorText}>{errors.status.message}</span>
+            )}
+          </div>
         </div>
 
         <div className={styles.actions}>
           <button
             type="submit"
             className={styles.saveButton}
-            disabled={addSupplierMutation.isPending || !isFormValid}
+            disabled={addSupplierMutation.isPending}
           >
             {addSupplierMutation.isPending ? "Adding..." : "Add"}
           </button>
-
           <button
             type="button"
             onClick={onClose}
