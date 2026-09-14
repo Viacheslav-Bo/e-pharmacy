@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import { AuthProvider } from "@/components/AuthProvider/AuthProvider";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -26,6 +27,7 @@ export default function RootLayout({
         <TanStackProvider>
           <AuthProvider>{children}</AuthProvider>
         </TanStackProvider>
+        <Toaster position="top-right" />
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import { logout } from "@/lib/api/auth";
+import toast from "react-hot-toast";
 import styles from "./LogoutBtn.module.css";
 
 export const LogoutBtn = ({ className }: { className?: string }) => {
@@ -10,9 +11,15 @@ export const LogoutBtn = ({ className }: { className?: string }) => {
   const queryClient = useQueryClient();
 
   const handleLogout = async (): Promise<void> => {
-    await logout();
-    queryClient.clear();
-    router.replace("/login");
+    try {
+      await logout();
+      queryClient.clear();
+      toast.success("Logged out successfully");
+      router.replace("/login");
+    } catch (error) {
+      console.error("Failed to logout:", error);
+      toast.error("Failed to logout");
+    }
   };
 
   return (
