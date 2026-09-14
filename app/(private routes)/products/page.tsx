@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 
 import { getProducts } from "@/lib/api/products";
 import { NameFilter } from "@/components/NameFilter/NameFilter";
 import { ProductsTable } from "@/components/ProductsTable/ProductsTable";
 import { AddProductModal } from "@/components/Modal/AddProductModal/AddProductModal";
 import { Pagination } from "@/components/Pagination/Pagination";
+import GlobalLoader from "@/components/Loaders/GlobalLoader/GlobalLoader";
+import toast from "react-hot-toast";
 
 import styles from "./page.module.css";
 
@@ -17,10 +19,17 @@ export default function ProductsPage() {
   const [page, setPage] = useState(1);
   const limit = 5;
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isFetching, isPlaceholderData, isError } = useQuery({
     queryKey: ["products", name, page],
     queryFn: () => getProducts({ search: name || undefined, page, limit }),
+    placeholderData: keepPreviousData,
   });
+
+  const showOverlay = isFetching && isPlaceholderData;
+
+  useEffect(() => {
+    if (isError) toast.error("Failed to load products");
+  }, [isError]);
 
   const handleFilterChange = (newName: string) => {
     setName(newName);
@@ -28,7 +37,7 @@ export default function ProductsPage() {
   };
 
   if (isError) {
-    return <p className={styles.error}>Не вдалось завантажити products</p>;
+    return <p className={styles.error}>Failed to load products</p>;
   }
 
   return (
@@ -55,21 +64,29 @@ export default function ProductsPage() {
         </button>
       </div>
 
-      {isLoading || !data ?
-        <p>Loading...</p>
-      : <>
-          <ProductsTable products={data.products} />
-          {data.totalPages > 1 && (
-            <>
-              <Pagination
-                currentPage={page}
-                totalPages={data.totalPages}
-                onPageChange={setPage}
-              />
-            </>
-          )}
-          <div className={styles.scrollHint} aria-hidden="true" />
-        </>
+      {isLoading ?
+        <GlobalLoader fullScreen={false} />
+      : data && (
+          <div className={styles.tableWrapper}>
+            {showOverlay && (
+              <div className={styles.tableOverlay}>
+                <GlobalLoader fullScreen={false} />
+              </div>
+            )}
+            <ProductsTable products={data.products} />
+            {data.totalPages > 1 && (
+              <>
+                <Pagination
+                  currentPage={page}
+                  totalPages={data.totalPages}
+                  onPageChange={setPage}
+                  disabled={showOverlay}
+                />
+              </>
+            )}
+            <div className={styles.scrollHint} aria-hidden="true" />
+          </div>
+        )
       }
 
       {isAddModalOpen && (

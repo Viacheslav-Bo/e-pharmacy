@@ -4,12 +4,14 @@ type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  disabled?: boolean;
 };
 
 export const Pagination = ({
   currentPage,
   totalPages,
   onPageChange,
+  disabled,
 }: PaginationProps) => {
   const start = Math.max(0, Math.min(currentPage - 3, totalPages - 5));
   const visiblePages = Array.from(
@@ -24,6 +26,7 @@ export const Pagination = ({
           key={page}
           type="button"
           onClick={() => onPageChange(page)}
+          disabled={disabled}
           className={`${styles.dot} ${page === currentPage ? styles.active : ""}`}
           aria-label={`Page ${page}`}
         />
