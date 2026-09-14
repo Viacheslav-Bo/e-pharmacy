@@ -8,6 +8,7 @@ import { Button } from "@/components/Button/Button";
 import { login } from "@/lib/api/auth";
 import type { LoginPayload } from "@/types/auth";
 import { loginSchema } from "./LoginForm.schema";
+import toast from "react-hot-toast";
 import styles from "./LoginForm.module.css";
 
 export const LoginForm = () => {
@@ -28,9 +29,12 @@ export const LoginForm = () => {
     setServerError(null);
     try {
       await login(payload);
+      toast.success("Successfully logged in");
       router.push("/dashboard");
     } catch (error) {
-      setServerError(error instanceof Error ? error.message : "Помилка входу");
+      const message = error instanceof Error ? error.message : "Помилка входу";
+      setServerError(message);
+      toast.error(message);
     }
   };
 

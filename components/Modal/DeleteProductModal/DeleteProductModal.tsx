@@ -3,6 +3,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Modal } from "@/components/Modal/Modal";
 import { deleteProduct } from "@/lib/api/products";
+import toast from "react-hot-toast";
 import styles from "./DeleteProductModal.module.css";
 
 type DeleteProductModalProps = {
@@ -24,10 +25,12 @@ export const DeleteProductModal = ({
       await queryClient.invalidateQueries({
         queryKey: ["products"],
       });
+      toast.success("Product deleted successfully");
       onClose();
     },
     onError: (error) => {
       console.error("Failed to delete product:", error);
+      toast.error("Failed to delete product");
     },
   });
 
@@ -40,7 +43,9 @@ export const DeleteProductModal = ({
       <div className={styles.content}>
         <h2 className={styles.title}>Delete product</h2>
         <p className={styles.text}>
-          Are you sure you want to delete <span className={styles.productName}>{productName}</span>? This action cannot be undone.
+          Are you sure you want to delete{" "}
+          <span className={styles.productName}>{productName}</span>? This action
+          cannot be undone.
         </p>
 
         <div className={styles.actions}>
