@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getUserInfo } from "@/lib/api/auth";
+import GlobalLoader from "@/components/Loaders/GlobalLoader/GlobalLoader";
 
 const PUBLIC_PATHS = ["/login"];
 
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isLoading, isError, pathname, router]);
 
-  if (isLoading) return null;
+  if (isLoading) return <GlobalLoader />;
 
   return <>{children}</>;
 };
