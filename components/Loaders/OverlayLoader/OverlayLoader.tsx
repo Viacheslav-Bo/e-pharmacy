@@ -1,12 +1,12 @@
 import GlobalLoader from "@/components/Loaders/GlobalLoader/GlobalLoader";
-import styles from "./Overlay.module.css";
+import styles from "./OverlayLoader.module.css";
 
-type OverlayProps = {
+type OverlayLoaderProps = {
   show: boolean;
   children: React.ReactNode;
 };
 
-export default function Overlay({ show, children }: OverlayProps) {
+export default function OverlayLoader({ show, children }: OverlayLoaderProps) {
   return (
     <div className={styles.wrapper}>
       {show && (
