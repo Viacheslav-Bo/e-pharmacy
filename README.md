@@ -20,6 +20,14 @@ HTTP Client: Axios
 Utilities: Day.js, React Hot Toast, React Select, React Ellipsis Text
 ```
 
+## 🔐 Demo Credentials
+
+You can use the following credentials to test the login functionality:
+
+Email: admin@test.com
+
+Password: 12345678
+
 ## Project Structure & Scripts
 
 ```
@@ -39,13 +47,6 @@ npm start
 npm run lint
 ```
 
-## Test Credentials
-
-For testing login functionality in the UI:
-
-- **Email:** `admin@test.com`
-- **Password:** `12345678`
-
 ## Core Features
 
 ```
@@ -59,3 +60,12 @@ Order & Partner Tracking: Dedicated filtered tables for orders, suppliers, and c
 
 Responsive Layout: Adaptive desktop and tablet design with a fluid mobile layout starting from 375px.
 ```
+
+## 👤 Author
+
+**Viacheslav Bo**
+
+Full Stack Developer
+
+GitHub: https://github.com/Viacheslav-Bo
+LinkedIn: https://linkedin.com/in/viacheslav-bobivnyk
