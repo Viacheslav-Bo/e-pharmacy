@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+e-pharmacy
 
-## Getting Started
+A modern, production-ready web application built with Next.js, React, TypeScript, and MUI (Material-UI). It serves as an administrative management panel for a medical store, providing real-time analytics, order tracking, product inventory management, supplier tracking, and customer management.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```text
+Framework: Next.js (App Router)
+
+Runtime & Library: React 19, TypeScript
+
+UI Library & Styling: Material-UI (MUI), Emotion, CSS Modules
+
+State Management & Data Fetching: Zustand, TanStack React Query v5
+
+Forms & Validation: React Hook Form, Yup
+
+HTTP Client: Axios
+
+Utilities: Day.js, React Hot Toast, React Select, React Ellipsis Text
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure & Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+# Install dependencies
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run development server on port 3001
+npm run dev
 
-## Learn More
+# Build for production
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start production server
+npm start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run linter
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Test Credentials
 
-## Deploy on Vercel
+For testing login functionality in the UI:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Email:** `admin@test.com`
+- **Password:** `12345678`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Core Features
+
+```
+Secure Authentication: JWT-based login and session handling integrated with React Hook Form and Yup validation.
+
+Dashboard Analytics: Comprehensive statistical insights on products, suppliers, customers, and financial flows.
+
+Product Management: Full CRUD workflow with modal forms supporting categories (Medicine, Head, Hand, Dental Care, Skin Care, Eye Care, Vitamins & Supplements, Orthopedic Products, Baby Care).
+
+Order & Partner Tracking: Dedicated filtered tables for orders, suppliers, and customer databases.
+
+Responsive Layout: Adaptive desktop and tablet design with a fluid mobile layout starting from 375px.
+```
